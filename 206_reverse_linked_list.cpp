@@ -2,7 +2,7 @@
 
 using namespace std;
 
-//Definition for singly-linked list.
+// Definition for singly-linked list.
 struct ListNode
 {
     int val;
@@ -11,25 +11,25 @@ struct ListNode
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
- 
+
 class Solution
 {
 public:
-    ListNode* reverseList(ListNode* head) 
+    ListNode *reverseList(ListNode *head)
     {
         ListNode *prev = nullptr;
         ListNode *current = head;
         ListNode *next;
-        while(current != nullptr)
+        while (current != nullptr)
         {
             next = current->next;
             current->next = prev;
             prev = current;
-            current = next;            
+            current = next;
         }
-        
+
         head = prev;
-    
+
         return head;
     }
 };
@@ -37,17 +37,17 @@ public:
 int main()
 {
     Solution sol;
-    
-    //input
+
+    // input
     ListNode list(1);
     list.next = new ListNode(6);
     list.next->next = new ListNode(8);
-    
-    ListNode* result = sol.reverseList(&list);
 
-    //output
-    ListNode* trace = result;
-    while(trace != nullptr)
+    ListNode *result = sol.reverseList(&list);
+
+    // output
+    ListNode *trace = result;
+    while (trace != nullptr)
     {
         cout << trace->val;
         trace = trace->next;

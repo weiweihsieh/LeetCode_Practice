@@ -2,7 +2,7 @@
 
 using namespace std;
 
-//Definition for a binary tree node.
+// Definition for a binary tree node.
 struct TreeNode
 {
     int val;
@@ -16,19 +16,19 @@ struct TreeNode
 class Solution
 {
 public:
-    TreeNode* invertTree(TreeNode* root)
+    TreeNode *invertTree(TreeNode *root)
     {
-        if(root == nullptr)
+        if (root == nullptr)
             return nullptr;
-        
-        //swap
-        TreeNode* tmp = root->left;
+
+        // swap
+        TreeNode *tmp = root->left;
         root->left = root->right;
         root->right = tmp;
 
         invertTree(root->left);
         invertTree(root->right);
-        
+
         return root;
     }
 };
@@ -36,17 +36,17 @@ public:
 int main()
 {
     Solution sol;
-    
-    //input
+
+    // input
     TreeNode input(1);
     input.left = new TreeNode(2);
     input.left->left = new TreeNode(3);
     input.right = new TreeNode(6);
-    input.right->right =  new TreeNode(4);
+    input.right->right = new TreeNode(4);
 
     sol.invertTree(&input);
-    
-    //output
+
+    // output
     cout << input.left->val << endl;
 
     return 0;

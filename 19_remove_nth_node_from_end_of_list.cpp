@@ -2,7 +2,7 @@
 
 using namespace std;
 
-//Definition for singly-linked list.
+// Definition for singly-linked list.
 struct ListNode
 {
     int val;
@@ -12,9 +12,9 @@ struct ListNode
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-void printList(ListNode* head)
+void printList(ListNode *head)
 {
-    while(head != nullptr)
+    while (head != nullptr)
     {
         cout << head->val;
         head = head->next;
@@ -24,19 +24,19 @@ void printList(ListNode* head)
 class Solution
 {
 public:
-    ListNode* removeNthFromEnd(ListNode* head, int n)
+    ListNode *removeNthFromEnd(ListNode *head, int n)
     {
         ListNode *fast = head;
-        ListNode *slow = nullptr; //previous node of delete
+        ListNode *slow = nullptr; // previous node of delete
         ListNode *delNode = nullptr;
 
-        ListNode dummy(-1, head); //dummy node
+        ListNode dummy(-1, head); // dummy node
         slow = &dummy;
 
-        for(int i=0; i<n; i++)
+        for (int i = 0; i < n; i++)
             fast = fast->next;
 
-        while(fast != nullptr)
+        while (fast != nullptr)
         {
             fast = fast->next;
             slow = slow->next;
@@ -53,15 +53,15 @@ public:
 int main()
 {
     Solution sol;
-    
-    //input
+
+    // input
     ListNode a(1);
     a.next = new ListNode(6);
     a.next->next = new ListNode(8);
 
-    ListNode* n = sol.removeNthFromEnd(&a, 2);
+    ListNode *n = sol.removeNthFromEnd(&a, 2);
 
-    //output
+    // output
     printList(n);
     cout << endl;
 

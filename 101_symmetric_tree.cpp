@@ -2,7 +2,7 @@
 
 using namespace std;
 
-//Definition for a binary tree node.
+// Definition for a binary tree node.
 struct TreeNode
 {
     int val;
@@ -16,27 +16,27 @@ struct TreeNode
 class Solution
 {
 public:
-    bool isSymmetric(TreeNode* root)
+    bool isSymmetric(TreeNode *root)
     {
-        if(root->left == nullptr && root->right == nullptr) //only root
+        if (root->left == nullptr && root->right == nullptr) // only root
             return true;
-        
-        if(root->left && root->right && root->left->val == root->right->val) //compare left and right subtree
+
+        if (root->left && root->right && root->left->val == root->right->val) // compare left and right subtree
             return compare(root->left, root->right);
-        else //values of nodes are different
+        else // values of nodes are different
             return false;
     }
 
 private:
-    int compare(TreeNode* treeLeft, TreeNode* treeRight)
+    int compare(TreeNode *treeLeft, TreeNode *treeRight)
     {
-        if(treeLeft == nullptr && treeRight == nullptr) //complete check
+        if (treeLeft == nullptr && treeRight == nullptr) // complete check
             return true;
 
-        if(treeLeft == nullptr || treeRight == nullptr) //one subtree is null
+        if (treeLeft == nullptr || treeRight == nullptr) // one subtree is null
             return false;
 
-        if(treeLeft->val != treeRight->val) //different values
+        if (treeLeft->val != treeRight->val) // different values
             return false;
         else
             return compare(treeLeft->left, treeRight->right) && compare(treeLeft->right, treeRight->left);
@@ -46,17 +46,17 @@ private:
 int main()
 {
     Solution sol;
-    
-    //input
+
+    // input
     TreeNode input(1);
     input.left = new TreeNode(2);
     input.left->left = new TreeNode(3);
     input.right = new TreeNode(2);
-    input.right->right =  new TreeNode(4);
+    input.right->right = new TreeNode(4);
 
     bool ans = sol.isSymmetric(&input);
-    
-    //output
+
+    // output
     cout << ans << endl;
 
     return 0;
