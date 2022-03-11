@@ -17,6 +17,7 @@ class Solution
 public:
     ListNode *swapPairs(ListNode *head)
     {
+        // if list is empty or has only one node
         if (!head || !head->next)
             return head;
 
