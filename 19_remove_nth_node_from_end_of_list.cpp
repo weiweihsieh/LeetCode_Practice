@@ -26,27 +26,21 @@ class Solution
 public:
     ListNode *removeNthFromEnd(ListNode *head, int n)
     {
-        ListNode *fast = head;
-        ListNode *slow = nullptr; // previous node of delete
-        ListNode *delNode = nullptr;
-
-        ListNode dummy(-1, head); // dummy node
-        slow = &dummy;
+        ListNode *dummy = new ListNode(-1, head); // dummy node
+        ListNode *fast = head, *slow = dummy;
 
         for (int i = 0; i < n; i++)
             fast = fast->next;
 
-        while (fast != nullptr)
+        while (fast)
         {
             fast = fast->next;
             slow = slow->next;
         }
+        // slow points to the previous node to be deleted
+        slow->next = slow->next->next;
 
-        delNode = slow->next;
-        slow->next = delNode->next;
-        delNode = NULL;
-
-        return dummy.next;
+        return dummy->next;
     }
 };
 
@@ -55,14 +49,14 @@ int main()
     Solution sol;
 
     // input
-    ListNode a(1);
-    a.next = new ListNode(6);
-    a.next->next = new ListNode(8);
+    ListNode *list = new ListNode(1);
+    list->next = new ListNode(6);
+    list->next->next = new ListNode(8);
 
-    ListNode *n = sol.removeNthFromEnd(&a, 2);
+    ListNode *result = sol.removeNthFromEnd(list, 2);
 
     // output
-    printList(n);
+    printList(result);
     cout << endl;
 
     return 0;
