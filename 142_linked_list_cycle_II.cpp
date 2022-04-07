@@ -13,11 +13,11 @@ struct ListNode
 class Solution
 {
 public:
-    bool hasCycle(ListNode *head)
+    ListNode *detectCycle(ListNode *head)
     {
         // if list is empty or has only one node with no cycle
         if (!head || !head->next)
-            return false;
+            return NULL;
 
         ListNode *slow = head, *fast = head;
         while (fast && fast->next)
@@ -27,10 +27,20 @@ public:
 
             // the list has cycle
             if (fast == slow)
-                return true;
+            {
+                // find the node which cycle begins
+                slow = head;
+                while (slow != fast)
+                {
+                    slow = slow->next;
+                    fast = fast->next;
+                }
+
+                return slow;
+            }
         }
 
-        return false;
+        return NULL;
     }
 };
 
@@ -46,10 +56,11 @@ int main()
     list->next->next->next = new ListNode(4);
     list->next->next->next->next = pos;
 
-    bool result = sol.hasCycle(list);
+    ListNode *result = sol.detectCycle(list);
 
     // output
-    cout << result << endl;
+    // return the node where the cycle begins
+    cout << result->val << endl;
 
     return 0;
 }
