@@ -39,11 +39,11 @@ int main()
     Solution sol;
 
     // input
-    ListNode list(1);
-    list.next = new ListNode(6);
-    list.next->next = new ListNode(8);
+    ListNode *list = new ListNode(1);
+    list->next = new ListNode(6);
+    list->next->next = new ListNode(8);
 
-    ListNode *result = sol.reverseList(&list);
+    ListNode *result = sol.reverseList(list);
 
     // output
     ListNode *trace = result;
