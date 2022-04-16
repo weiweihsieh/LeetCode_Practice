@@ -17,9 +17,7 @@ class Solution
 public:
     ListNode *reverseList(ListNode *head)
     {
-        ListNode *prev = nullptr;
-        ListNode *current = head;
-        ListNode *next;
+        ListNode *prev = nullptr, *current = head, *next;
         while (current != nullptr)
         {
             next = current->next;
